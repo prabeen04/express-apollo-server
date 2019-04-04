@@ -18,5 +18,9 @@
     "webpack-cli": "^3.3.0",
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "apollo-server": "^2.4.8",
+    "graphql": "^14.2.1"
   }
 }

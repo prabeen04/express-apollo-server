@@ -10,6 +10,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^3.4.1"
+    "@types/webpack-env": "^1.13.9",
+    "clean-webpack-plugin": "^2.0.1",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.4.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }

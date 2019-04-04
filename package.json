@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "webpack --config webpack.$NODE_ENV.js",
+    "build": "webpack --config webpack.development.js",
     "start": "node dist/main"
   },
   "keywords": [],
@@ -12,15 +12,13 @@
   "devDependencies": {
     "@types/webpack-env": "^1.13.9",
     "clean-webpack-plugin": "^2.0.1",
+    "nodemon": "^1.18.10",
     "ts-loader": "^5.3.3",
+    "ts-node": "^8.0.3",
     "typescript": "^3.4.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
-  },
-  "dependencies": {
-    "apollo-server": "^2.4.8",
-    "graphql": "^14.2.1"
   }
 }

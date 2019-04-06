@@ -1,3 +1,22 @@
+const books = [
+  {
+    title: 'Harry Potter and the Chamber of Secrets',
+    author: {
+      id: 1,
+      name: 'J.K. Rowling'
+    }
+  },
+  {
+    title: 'Jurassic Park',
+    author: {
+      id: 2,
+      name: 'Michael Crichton'
+    },
+  },
+];
+
+
+
 // resolverMap.ts
 import { IResolvers } from 'graphql-tools';
 const resolver: IResolvers = {
@@ -15,6 +34,9 @@ const resolver: IResolvers = {
         name: `prabeen👋`
       }
     },
+    books(_: any, args: any): any {
+      return books
+    }
   },
   // Author: {
   //   userName(_: void, args: void): string {

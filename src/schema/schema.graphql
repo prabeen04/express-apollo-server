@@ -1,6 +1,7 @@
 type Query {
   user: User
   author: Author
+  books: [Book]
 }
 
 type Author {
@@ -12,4 +13,9 @@ type User {
   id: String!
   userName: String!
   email: String!
+}
+
+type Book {
+  title: String!
+  author: Author!
 }

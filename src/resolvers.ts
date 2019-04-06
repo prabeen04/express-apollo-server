@@ -58,7 +58,7 @@ const resolver: IResolvers = {
       return books
     },
     async getStoryById(_: any, args: any) {
-      const story = await Story.find({ _id: args._id })
+      const story = await Story.findOne({ _id: args._id })
       console.log('+_+_+', story)
       return story
     },

@@ -1,3 +1,15 @@
 type Query {
-  helloWorld: String!
+  user: User
+  author: Author
+}
+
+type Author {
+  id: String!
+  name: String!
+}
+
+type User {
+  id: String!
+  userName: String!
+  email: String!
 }

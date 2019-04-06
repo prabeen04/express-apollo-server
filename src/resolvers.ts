@@ -1,5 +1,6 @@
 import { IResolvers } from 'graphql-tools';
 import bcryptjs from 'bcryptjs'
+import { omit } from "lodash";
 import User from './models/UserSchema';
 import IUser from "./models/Interface/UserInterface";
 const books = [
@@ -57,14 +58,8 @@ const resolver: IResolvers = {
     async addUser(_: any, args: IUser) {
       const { userName, email, password } = args;
       const hashedPassword = await bcryptjs.hash(password, 10)
-      console.log(hashedPassword)
-      const newUser = await User.create({ userName, email, password: hashedPassword})
-      console.log('\n🚀', newUser)
-      return {
-        name: 'afjansf',
-        email: 'asfasf',
-        password: 'sflaf'
-      }
+      const newUser = await User.create({ userName, email, password: hashedPassword })
+      return omit(newUser.toObject(), 'password')
     },
     async addBook(_: void, args: any) {
       const newBook = {

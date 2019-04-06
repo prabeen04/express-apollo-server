@@ -52,7 +52,9 @@ const resolver: IResolvers = {
       console.log(args)
       return books.filter((book: any) => book.id === args.id)[0]
     },
-    stories(_: any, args: any): any {
+    async stories(_: any, args: any) {
+      const stories = await Story.find()
+      console.log('+_+_+', stories)
       return books
     },
   },
@@ -67,9 +69,11 @@ const resolver: IResolvers = {
       const newUser = await User.create({ userName, email, password: hashedPassword })
       return omit(newUser.toObject(), 'password')
     },
-    async addStory(_: any, args: any) {
-      console.log(args)
-      return {id: 'jdgnsdg'}
+    async addStory(_: any, args: IStory) {
+      const { title, article, authorId, createdAt } = args;
+      const newStory = await Story.create({ title, article, authorId, createdAt });
+      console.log(newStory)
+      return newStory.toObject()
     },
     async addBook(_: void, args: any) {
       const newBook = {

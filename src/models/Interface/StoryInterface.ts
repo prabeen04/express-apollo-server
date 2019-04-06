@@ -4,4 +4,5 @@ export default interface IStory extends Document {
     title: string;
     article: string;
     authorId: string;
+    createdAt: any;
 }

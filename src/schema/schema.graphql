@@ -1,8 +1,17 @@
+# All the base query types goes here
+# You need to define every query type here, 
+# If any query type is not provide here you cannot query it
 type Query {
   user: User
   author: Author
   books: [Book]
   getBookById(id: Int!): Book
+}
+# All the mutations goes here
+# mutation mean any thing you want to add
+
+type Mutation {
+  addBook(title: String!): Book
 }
 
 type Author {

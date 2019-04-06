@@ -54,7 +54,14 @@ const resolver: IResolvers = {
  */
   Mutation: {
     addBook(_: void, args: any): any {
-      const newBook = { ...args.book, id: books.length + 1 }
+      const newBook = {
+        title: args.title,
+        id: books.length + 1,
+        author: {
+          id: 1,
+          name: 'J.K. Rowling'
+        }
+      }
       books.push(newBook)
       return newBook;
     },

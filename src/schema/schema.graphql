@@ -2,6 +2,7 @@ type Query {
   user: User
   author: Author
   books: [Book]
+  getBookById(id: Int!): Book
 }
 
 type Author {
@@ -16,6 +17,7 @@ type User {
 }
 
 type Book {
+  id: Int!
   title: String!
   author: Author!
 }

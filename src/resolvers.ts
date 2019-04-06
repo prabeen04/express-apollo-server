@@ -1,5 +1,6 @@
 const books = [
   {
+    id: 1,
     title: 'Harry Potter and the Chamber of Secrets',
     author: {
       id: 1,
@@ -7,6 +8,7 @@ const books = [
     }
   },
   {
+    id: 2,
     title: 'Jurassic Park',
     author: {
       id: 2,
@@ -36,12 +38,11 @@ const resolver: IResolvers = {
     },
     books(_: any, args: any): any {
       return books
-    }
+    },
+    getBookById(_: any, args: any): any {
+      console.log(args)
+      return books.filter((book: any) => book.id === args.id)[0]
+    },
   },
-  // Author: {
-  //   userName(_: void, args: void): string {
-  //     return `👋 Hello Prabeen! 👋`;
-  //   },
-  // },
 };
 export default resolver;

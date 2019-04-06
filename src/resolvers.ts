@@ -1,3 +1,7 @@
+import { IResolvers } from 'graphql-tools';
+import bcryptjs from 'bcryptjs'
+import User from './models/UserSchema';
+import IUser from "./models/Interface/UserInterface";
 const books = [
   {
     id: 1,
@@ -17,10 +21,7 @@ const books = [
   },
 ];
 
-
-
-// resolverMap.ts
-import { IResolvers } from 'graphql-tools';
+//resolver for graphql queries and mutations
 const resolver: IResolvers = {
   /**
    * define resolver for all type of data query
@@ -53,7 +54,19 @@ const resolver: IResolvers = {
  * its where you add data to wherever you want
  */
   Mutation: {
-    addBook(_: void, args: any): any {
+    async addUser(_: any, args: IUser) {
+      const { userName, email, password } = args;
+      const hashedPassword = await bcryptjs.hash(password, 10)
+      console.log(hashedPassword)
+      const newUser = await User.create({ userName, email, password: hashedPassword})
+      console.log('\n🚀', newUser)
+      return {
+        name: 'afjansf',
+        email: 'asfasf',
+        password: 'sflaf'
+      }
+    },
+    async addBook(_: void, args: any) {
       const newBook = {
         title: args.title,
         id: books.length + 1,

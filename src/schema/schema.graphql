@@ -7,13 +7,16 @@ type Query {
   books: [Book]
   getBookById(id: Int!): Book
 }
+
 # All the mutations goes here
 # mutation mean any thing you want to add
-
 type Mutation {
+  addUser(userName: String!, email: String!, password: String!): User
   addBook(title: String!): Book
 }
 
+#generic data types
+#all application data types
 type Author {
   id: String!
   name: String!
@@ -23,6 +26,7 @@ type User {
   id: String!
   userName: String!
   email: String!
+  password: String!
 }
 
 type Book {

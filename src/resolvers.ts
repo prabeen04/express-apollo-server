@@ -3,6 +3,9 @@ import bcryptjs from 'bcryptjs'
 import { omit } from "lodash";
 import User from './models/UserSchema';
 import IUser from "./models/Interface/UserInterface";
+import Story from './models/StorySchema';
+import IStory from './models/Interface/StoryInterface';
+
 const books = [
   {
     id: 1,
@@ -65,8 +68,8 @@ const resolver: IResolvers = {
       return omit(newUser.toObject(), 'password')
     },
     async addStory(_: any, args: any) {
-      
-      return 'jdgnsdg'
+      console.log(args)
+      return {id: 'jdgnsdg'}
     },
     async addBook(_: void, args: any) {
       const newBook = {

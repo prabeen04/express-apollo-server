@@ -57,6 +57,11 @@ const resolver: IResolvers = {
       console.log('+_+_+', stories)
       return books
     },
+    async getStoryById(_: any, args: any) {
+      const story = await Story.find({ _id: args._id })
+      console.log('+_+_+', story)
+      return story
+    },
   },
   /**
  * define resolver for all type of mutaion

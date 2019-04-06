@@ -8,6 +8,7 @@ type Query {
   books: [Book]
   getBookById(id: Int!): Book
   stories: [Story]
+  getStoryById(_id: String!): Story
 }
 
 # All the mutations goes here

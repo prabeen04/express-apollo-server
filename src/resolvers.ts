@@ -49,6 +49,9 @@ const resolver: IResolvers = {
       console.log(args)
       return books.filter((book: any) => book.id === args.id)[0]
     },
+    stories(_: any, args: any): any {
+      return books
+    },
   },
   /**
  * define resolver for all type of mutaion
@@ -60,6 +63,10 @@ const resolver: IResolvers = {
       const hashedPassword = await bcryptjs.hash(password, 10)
       const newUser = await User.create({ userName, email, password: hashedPassword })
       return omit(newUser.toObject(), 'password')
+    },
+    async addStory(_: any, args: any) {
+      
+      return 'jdgnsdg'
     },
     async addBook(_: void, args: any) {
       const newBook = {

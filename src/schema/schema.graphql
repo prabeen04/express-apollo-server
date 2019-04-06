@@ -6,6 +6,7 @@ type Query {
   author: Author
   books: [Book]
   getBookById(id: Int!): Book
+  stories: [Story]
 }
 
 # All the mutations goes here
@@ -13,6 +14,7 @@ type Query {
 type Mutation {
   addUser(userName: String!, email: String!, password: String!): User
   addBook(title: String!): Book
+  addStory(title: String!, article: String!, authorId: String!): Story
 }
 
 #generic data types
@@ -33,4 +35,10 @@ type Book {
   id: Int!
   title: String!
   author: Author!
+}
+type Story {
+  id: String!
+  title: String!
+  article: String!
+  authorId: String!
 }

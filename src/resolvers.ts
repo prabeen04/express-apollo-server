@@ -13,14 +13,16 @@ const resolver: IResolvers = {
    * its where you decide what to return when a query is fired
    */
   Query: {
+    async users(_: any, args: any) {
+      const users = await User.find()
+      return users;
+    },
     async stories(_: any, args: any) {
       const stories = await Story.find()
-      console.log('+_+_+', stories)
-      return {books: 098}
+      return stories;
     },
     async getStoryById(_: any, args: any) {
       const story = await Story.findOne({ _id: args._id })
-      console.log('+_+_+', story)
       return story
     },
   },
@@ -38,7 +40,6 @@ const resolver: IResolvers = {
     async addStory(_: any, args: IStory) {
       const { title, article, authorId, createdAt } = args;
       const newStory = await Story.create({ title, article, authorId, createdAt });
-      console.log(newStory)
       return newStory.toObject()
     },
   },

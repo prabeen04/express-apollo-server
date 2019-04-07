@@ -3,6 +3,7 @@ scalar DateTime
 # You need to define every query type here, 
 # If any query type is not provide here you cannot query it
 type Query {
+  users: [User]
   stories: [Story]
   getStoryById(_id: String!): Story
 }

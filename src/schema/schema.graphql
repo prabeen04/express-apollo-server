@@ -3,10 +3,6 @@ scalar DateTime
 # You need to define every query type here, 
 # If any query type is not provide here you cannot query it
 type Query {
-  user: User
-  author: Author
-  books: [Book]
-  getBookById(id: Int!): Book
   stories: [Story]
   getStoryById(_id: String!): Story
 }
@@ -15,7 +11,6 @@ type Query {
 # mutation mean any thing you want to add
 type Mutation {
   addUser(userName: String!, email: String!, password: String!): User
-  addBook(title: String!): Book
   addStory(title: String!, article: String!, authorId: String!, createdAt: DateTime!): Story
 }
 #generic data types

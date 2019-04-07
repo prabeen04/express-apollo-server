@@ -13,19 +13,6 @@ const resolver: IResolvers = {
    * its where you decide what to return when a query is fired
    */
   Query: {
-    user(_: void, args: any): any {
-      return {
-        id: `👋 Hello world! 👋`,
-        userName: `prabeen👋`,
-        email: 'example@example.com'
-      }
-    },
-    author(_: void, args: any): any {
-      return {
-        id: `👋 Hello world! 👋`,
-        name: `prabeen👋`
-      }
-    },
     async stories(_: any, args: any) {
       const stories = await Story.find()
       console.log('+_+_+', stories)

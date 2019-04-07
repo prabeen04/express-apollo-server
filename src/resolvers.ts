@@ -5,7 +5,7 @@ import User from './models/UserSchema';
 import IUser from "./models/Interface/UserInterface";
 import Story from './models/StorySchema';
 import IStory from './models/Interface/StoryInterface';
-
+import { getStoryById } from "./resolvers/storyResolver";
 //resolver for graphql queries and mutations
 const resolver: IResolvers = {
   /**
@@ -21,10 +21,7 @@ const resolver: IResolvers = {
       const stories = await Story.find()
       return stories;
     },
-    async getStoryById(_: any, args: any) {
-      const story = await Story.findOne({ _id: args._id })
-      return story
-    },
+    getStoryById
   },
   /**
  * define resolver for all type of mutaion

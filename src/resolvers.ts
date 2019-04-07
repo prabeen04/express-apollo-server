@@ -6,25 +6,6 @@ import IUser from "./models/Interface/UserInterface";
 import Story from './models/StorySchema';
 import IStory from './models/Interface/StoryInterface';
 
-const books = [
-  {
-    id: 1,
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: {
-      id: 1,
-      name: 'J.K. Rowling'
-    }
-  },
-  {
-    id: 2,
-    title: 'Jurassic Park',
-    author: {
-      id: 2,
-      name: 'Michael Crichton'
-    },
-  },
-];
-
 //resolver for graphql queries and mutations
 const resolver: IResolvers = {
   /**
@@ -45,17 +26,10 @@ const resolver: IResolvers = {
         name: `prabeen👋`
       }
     },
-    books(_: any, args: any): any {
-      return books
-    },
-    getBookById(_: any, args: any): any {
-      console.log(args)
-      return books.filter((book: any) => book.id === args.id)[0]
-    },
     async stories(_: any, args: any) {
       const stories = await Story.find()
       console.log('+_+_+', stories)
-      return books
+      return {books: 098}
     },
     async getStoryById(_: any, args: any) {
       const story = await Story.findOne({ _id: args._id })
@@ -79,18 +53,6 @@ const resolver: IResolvers = {
       const newStory = await Story.create({ title, article, authorId, createdAt });
       console.log(newStory)
       return newStory.toObject()
-    },
-    async addBook(_: void, args: any) {
-      const newBook = {
-        title: args.title,
-        id: books.length + 1,
-        author: {
-          id: 1,
-          name: 'J.K. Rowling'
-        }
-      }
-      books.push(newBook)
-      return newBook;
     },
   },
 };

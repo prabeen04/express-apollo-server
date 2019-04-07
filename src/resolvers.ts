@@ -5,7 +5,7 @@ import User from './models/UserSchema';
 import IUser from "./models/Interface/UserInterface";
 import Story from './models/StorySchema';
 import IStory from './models/Interface/StoryInterface';
-import { getStoryById } from "./resolvers/storyResolver";
+import { getStoryById, stories, addStory } from "./resolvers/storyResolver";
 //resolver for graphql queries and mutations
 const resolver: IResolvers = {
   /**
@@ -17,10 +17,7 @@ const resolver: IResolvers = {
       const users = await User.find()
       return users;
     },
-    async stories(_: any, args: any) {
-      const stories = await Story.find()
-      return stories;
-    },
+    stories,
     getStoryById
   },
   /**
@@ -34,11 +31,7 @@ const resolver: IResolvers = {
       const newUser = await User.create({ userName, email, password: hashedPassword })
       return omit(newUser.toObject(), 'password')
     },
-    async addStory(_: any, args: IStory) {
-      const { title, article, authorId, createdAt } = args;
-      const newStory = await Story.create({ title, article, authorId, createdAt });
-      return newStory.toObject()
-    },
+    addStory,
   },
 };
 export default resolver;

@@ -14,3 +14,9 @@ export const addUser: any = async (_: any, args: any) => {
     const newUser = await User.create({ userName, email, password: hashedPassword })
     return omit(newUser.toObject(), 'password')
 }
+export const login: any = async (_: any, args: any) => {
+    const { email, password } = args;
+    const user: any = await User.findOne({ email })
+    const match = await bcryptjs.compare(password, user.password)
+    return match ? true : false
+}

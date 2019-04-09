@@ -20,6 +20,7 @@ type Mutation {
 type Author {
   id: String!
   name: String!
+  storiesId: [String]
 }
 
 type User {
@@ -29,11 +30,6 @@ type User {
   password: String!
 }
 
-type Book {
-  id: Int!
-  title: String!
-  author: Author!
-}
 type Story {
   id: String!
   title: String!

@@ -1,9 +1,9 @@
 import { Document } from "mongoose";
 
-export interface ITodo extends Document {
+export default interface ITodo extends Document {
     id: string;
     title: string;
     isCompleted: boolean;
-    authorId: string;
+    userId: string;
     createdAt: any;
 }

@@ -43,6 +43,6 @@ type Todo {
   id: String!
   title: String!
   isCompleted: Boolean!
-  authorId: String
+  userId: String
   createdAt: DateTime!
 }

@@ -6,6 +6,7 @@ type Query {
   users: [User]
   stories: [Story]
   getStoryById(_id: String!): Story
+  getTodos: [Todo]
 }
 
 # All the mutations goes here
@@ -35,5 +36,13 @@ type Story {
   title: String!
   article: String!
   authorId: String!
+  createdAt: DateTime!
+}
+
+type Todo {
+  id: String!
+  title: String!
+  isCompleted: Boolean!
+  authorId: String
   createdAt: DateTime!
 }

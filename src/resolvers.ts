@@ -1,7 +1,7 @@
 import { IResolvers } from 'graphql-tools';
 import { getStoryById, stories, addStory } from "./resolvers/storyResolver";
 import { addUser, users } from "./resolvers/userResolver";
-import { addTodo, getTodos } from "./resolvers/todoResolver";
+import { addTodo, getTodos, updateTodo } from "./resolvers/todoResolver";
 
 //resolver for graphql queries and mutations
 const resolver: IResolvers = {
@@ -23,6 +23,7 @@ const resolver: IResolvers = {
     addUser,
     addStory,
     addTodo,
+    updateTodo
   },
 };
 export default resolver;

@@ -12,3 +12,11 @@ export const addTodo: any = async (_: any, args: any) => {
     console.log(newTodo)
     return newTodo
 }
+export const updateTodo: any = async (_: any, args: any) => {
+    const { id, patches } = args;
+    const updateTodo: any = await Todo.findByIdAndUpdate(id, {
+        $set: patches
+    })
+    console.log(updateTodo)
+    return updateTodo
+}

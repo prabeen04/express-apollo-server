@@ -1,6 +1,7 @@
 import { IResolvers } from 'graphql-tools';
 import { getStoryById, stories, addStory } from "./resolvers/storyResolver";
 import { addUser, users } from "./resolvers/userResolver";
+import { getTodos } from "./resolvers/todoResolver";
 
 //resolver for graphql queries and mutations
 const resolver: IResolvers = {
@@ -11,7 +12,8 @@ const resolver: IResolvers = {
   Query: {
     users,
     stories,
-    getStoryById
+    getStoryById,
+    getTodos
   },
   /**
  * define resolver for all type of mutaion

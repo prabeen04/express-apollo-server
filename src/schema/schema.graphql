@@ -16,7 +16,7 @@ type Mutation {
   login( email: String!, password: String!): Boolean
   addStory(title: String!, article: String!, authorId: String!, createdAt: DateTime!): Story
   addTodo(title: String!, isCompleted: Boolean!, userId: String!, createdAt: DateTime!): Todo
-  updateTodo(id: String!, tittle: String, isCompleted: Boolean, userId: String, createdAt: DateTime): Todo
+  updateTodo(id: String!, title: String, isCompleted: Boolean, userId: String, createdAt: DateTime): Todo
 }
 #generic data types
 #all application data types

@@ -17,6 +17,7 @@ type Mutation {
   addStory(title: String!, article: String!, authorId: String!, createdAt: DateTime!): Story
   addTodo(title: String!, isCompleted: Boolean!, userId: String!, createdAt: DateTime!): Todo
   updateTodo(id: String!, title: String, isCompleted: Boolean, userId: String, createdAt: DateTime): Todo
+  deleteTodo(id: String!): Boolean
 }
 #generic data types
 #all application data types

@@ -5,7 +5,7 @@ import User from "../../../models/UserSchema";
 
 const userResolver: IResolvers = {
   Query: {
-    hi: () => "hi there!"
+    hi: () =>({ id: "hi there!"})
   },
   Mutation: {
     register: async (_: any, args: any) => {

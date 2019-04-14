@@ -20,9 +20,10 @@ export const updateTodo: any = async (_: any, args: any) => {
   console.log(updateTodo);
   return { ...updateTodo, ...patches };
 };
-export const deleteTodo: any = async (_: any, args: any) => {
+export const deleteTodo: any = async (_: any, args: { id: string }) => {
   const { id } = args;
+  console.log(id);
   const isDeleted: any = await Todo.findByIdAndDelete(id);
-  console.log(isDeleted);
+  console.log("after delete", isDeleted);
   return isDeleted;
 };

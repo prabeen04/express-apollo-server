@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node 'dist/server.js'",
     "build": "tsc -p . && ncp src/schema dist/schema",
+    "test": "jest",
     "start:dev": "npm run build:dev",
     "build:dev": "nodemon \"src/server.ts\" --exec \"ts-node\" src/server.ts -e ts,graphql"
   },
@@ -46,5 +47,19 @@
     "lodash": "^4.17.11",
     "mongoose": "^5.4.22",
     "ncp": "^2.0.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

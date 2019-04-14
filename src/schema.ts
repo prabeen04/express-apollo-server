@@ -1,11 +1,12 @@
-// schema.ts
-import 'graphql-import-node';
-import * as typeDefs from './schema/schema.graphql';
-import { makeExecutableSchema } from 'graphql-tools';
-import resolvers from './resolvers';
-import { GraphQLSchema } from 'graphql';
+import "graphql-import-node";
+import { mergeResolvers, mergeTypes } from "merge-graphql-schemas";
+import * as typeDefs from "./schema/schema.graphql";
+import { makeExecutableSchema, mergeSchemas } from "graphql-tools";
+import resolvers from "./resolvers";
+import { GraphQLSchema } from "graphql";
+
 const schema: GraphQLSchema = makeExecutableSchema({
-  typeDefs,
-  resolvers,
+  typeDefs: mergeTypes([typeDefs]),
+  resolvers: mergeResolvers([resolvers])
 });
 export default schema;

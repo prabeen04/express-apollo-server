@@ -1,13 +1,35 @@
-type Query{
-    hi: String!
+scalar DateTime
+
+type Query {
+  getTodos: [Todo]  
 }
 type Mutation {
-    register( userName: String!, email: String!, password: String! ): User1
+  addStory(
+    title: String!
+    article: String!
+    authorId: String!
+    createdAt: DateTime!
+  ): Story
+  addTodo(
+    title: String!
+    isCompleted: Boolean!
+    userId: String!
+    createdAt: DateTime!
+  ): Todo
+  updateTodo(
+    id: String!
+    title: String
+    isCompleted: Boolean
+    userId: String
+    createdAt: DateTime
+  ): Todo
+  deleteTodo(id: String!): Boolean
 }
 
-type User1 {
+type Todo {
   id: String!
-  userName: String!
-  email: String!
-  password: String!
+  title: String!
+  isCompleted: Boolean!
+  userId: String
+  createdAt: DateTime!
 }

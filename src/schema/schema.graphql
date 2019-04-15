@@ -1,4 +1,3 @@
-scalar DateTime
 # All the base query types goes here
 # You need to define every query type here, 
 # If any query type is not provide here you cannot query it
@@ -11,7 +10,7 @@ type Query {
 # mutation mean any thing you want to add
 type Mutation {
   login( email: String!, password: String!): Boolean
-  addStory(title: String!, article: String!, authorId: String!, createdAt: DateTime!): Story
+  addStory(title: String!, article: String!, authorId: String!, createdAt: String!): Story
 }
 #generic data types
 #all application data types
@@ -33,5 +32,5 @@ type Story {
   title: String!
   article: String!
   authorId: String!
-  createdAt: DateTime!
+  createdAt: String!
 }

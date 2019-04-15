@@ -1,12 +1,9 @@
 import { IResolvers } from "graphql-tools";
-import { omit } from "lodash";
-import * as bcryptjs from "bcryptjs";
 import ITodo from "../../models/Interface/TodoInterface";
 import Todo from "../../models/TodoSchema";
 
-const userResolver: IResolvers = {
+export const todoResolver: IResolvers = {
   Query: {
-    hi: () => ({ id: "hi there!" }),
     getTodos: async (_: any, args: any) => {
       const newTodo: ITodo[] = await Todo.find();
       console.log(newTodo);

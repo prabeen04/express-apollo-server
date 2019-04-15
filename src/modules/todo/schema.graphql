@@ -4,12 +4,6 @@ type Query {
   getTodos: [Todo]  
 }
 type Mutation {
-  addStory(
-    title: String!
-    article: String!
-    authorId: String!
-    createdAt: DateTime!
-  ): Story
   addTodo(
     title: String!
     isCompleted: Boolean!

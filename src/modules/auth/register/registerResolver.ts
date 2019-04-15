@@ -3,7 +3,7 @@ import { omit } from "lodash";
 import * as bcryptjs from "bcryptjs";
 import User from "../../../models/UserSchema";
 
-const userResolver: IResolvers = {
+export const userResolver: IResolvers = {
   Query: {
     hi: () =>({ id: "hi there!"})
   },

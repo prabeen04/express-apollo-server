@@ -1,22 +1,38 @@
 import { IResolvers } from "graphql-tools";
 import { omit } from "lodash";
 import * as bcryptjs from "bcryptjs";
-import User from "../../../models/UserSchema";
+import ITodo from "../../models/Interface/TodoInterface";
+import Todo from "../../models/TodoSchema";
 
 const userResolver: IResolvers = {
   Query: {
-    hi: () =>({ id: "hi there!"})
+    hi: () => ({ id: "hi there!" }),
+    getTodos: async (_: any, args: any) => {
+      const newTodo: ITodo[] = await Todo.find();
+      console.log(newTodo);
+      return newTodo;
+    }
   },
   Mutation: {
-    register: async (_: any, args: any) => {
-      const { userName, email, password } = args;
-      const hashedPassword = await bcryptjs.hash(password, 10);
-      const newUser = await User.create({
-        userName,
-        email,
-        password: hashedPassword
+    addTodo: async (_: any, args: any) => {
+      const newTodo: ITodo = await Todo.create(args);
+      console.log(newTodo);
+      return newTodo;
+    },
+    updateTodo: async (_: any, args: any) => {
+      const { id, ...patches } = args;
+      const updateTodo: any = await Todo.findByIdAndUpdate(id, {
+        $set: { ...patches }
       });
-      return omit(newUser.toObject(), "password");
+      console.log(updateTodo);
+      return { ...updateTodo, ...patches };
+    },
+    deleteTodo: async (_: any, args: { id: string }) => {
+      const { id } = args;
+      console.log(id);
+      const isDeleted: any = await Todo.findByIdAndDelete(id);
+      console.log("after delete", isDeleted);
+      return isDeleted;
     }
   }
 };

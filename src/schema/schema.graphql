@@ -5,7 +5,6 @@ scalar DateTime
 type Query {
   stories: [Story]
   getStoryById(_id: String!): Story
-  getTodos: [Todo]
 }
 
 # All the mutations goes here
@@ -13,9 +12,6 @@ type Query {
 type Mutation {
   login( email: String!, password: String!): Boolean
   addStory(title: String!, article: String!, authorId: String!, createdAt: DateTime!): Story
-  addTodo(title: String!, isCompleted: Boolean!, userId: String!, createdAt: DateTime!): Todo
-  updateTodo(id: String!, title: String, isCompleted: Boolean, userId: String, createdAt: DateTime): Todo
-  deleteTodo(id: String!): Boolean
 }
 #generic data types
 #all application data types
@@ -37,13 +33,5 @@ type Story {
   title: String!
   article: String!
   authorId: String!
-  createdAt: DateTime!
-}
-
-type Todo {
-  id: String!
-  title: String!
-  isCompleted: Boolean!
-  userId: String
   createdAt: DateTime!
 }

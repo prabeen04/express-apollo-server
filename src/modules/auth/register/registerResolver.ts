@@ -3,7 +3,8 @@ import { omit } from "lodash";
 import * as bcryptjs from "bcryptjs";
 import User from "../../../models/UserSchema";
 
-export const userResolver: IResolvers = {
+
+const registerResolver: IResolvers = {
   Query: {
     hi: () =>({ id: "hi there!"})
   },
@@ -21,4 +22,4 @@ export const userResolver: IResolvers = {
   }
 };
 
-// export default userResolver;
+export default registerResolver;

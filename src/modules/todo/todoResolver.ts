@@ -2,7 +2,7 @@ import { IResolvers } from "graphql-tools";
 import ITodo from "../../models/Interface/TodoInterface";
 import Todo from "../../models/TodoSchema";
 
-export const todoResolver: IResolvers = {
+const todoResolver: IResolvers = {
   Query: {
     getTodos: async (_: any, args: any) => {
       const newTodo: ITodo[] = await Todo.find();
@@ -33,3 +33,5 @@ export const todoResolver: IResolvers = {
     }
   }
 };
+
+export default todoResolver;

@@ -3,10 +3,9 @@ import { omit } from "lodash";
 import * as bcryptjs from "bcryptjs";
 import User from "../../../models/UserSchema";
 
-
 const registerResolver: IResolvers = {
   Query: {
-    hi: () =>({ id: "hi there!"})
+    hi: () => "hi there!"
   },
   Mutation: {
     register: async (_: any, args: any) => {

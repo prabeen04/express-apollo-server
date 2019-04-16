@@ -9,7 +9,7 @@ import * as todoTypedefs from "./modules/todo/schema.graphql";
 import todoResolver from "./modules/todo/todoResolver";
 
 import * as storyTypedefs from "./modules/story/schema.graphql";
-import storyResolver from "./modules/story/schema.graphql";
+import storyResolver from "./modules/story/storyResolver";
 
 import { makeExecutableSchema } from "graphql-tools";
 

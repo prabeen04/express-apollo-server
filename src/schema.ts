@@ -8,10 +8,13 @@ import registerResolver from "./modules/auth/register/registerResolver";
 import * as todoTypedefs from "./modules/todo/schema.graphql";
 import todoResolver from "./modules/todo/todoResolver";
 
+import * as storyTypedefs from "./modules/story/schema.graphql";
+import storyResolver from "./modules/story/schema.graphql";
+
 import { makeExecutableSchema } from "graphql-tools";
 
 const schema: GraphQLSchema = makeExecutableSchema({
-  typeDefs: mergeTypes([userSchema, registerTypedefs, todoTypedefs], { all: true }),
-  resolvers: mergeResolvers([registerResolver, todoResolver])
+  typeDefs: mergeTypes([userSchema, registerTypedefs, todoTypedefs,storyTypedefs, storyTypedefs], { all: true }),
+  resolvers: mergeResolvers([registerResolver, todoResolver, storyResolver])
 });
 export default schema;

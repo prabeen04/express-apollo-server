@@ -9,7 +9,6 @@ type Query {
 # All the mutations goes here
 # mutation mean any thing you want to add
 type Mutation {
-  login( email: String!, password: String!): Boolean
   addStory(title: String!, article: String!, authorId: String!, createdAt: String!): Story
 }
 #generic data types
@@ -18,13 +17,6 @@ type Author {
   id: String!
   name: String!
   storiesId: [String]
-}
-
-type User {
-  id: String!
-  userName: String!
-  email: String!
-  password: String!
 }
 
 type Story {

@@ -20,3 +20,5 @@ export const userResolver: IResolvers = {
     }
   }
 };
+
+// export default userResolver;

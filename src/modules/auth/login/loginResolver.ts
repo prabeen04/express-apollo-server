@@ -8,6 +8,7 @@ const registerResolver: IResolvers = {
     login: async (_: any, args: any) => {
         const { email, password } = args;
         const user: any = await User.findOne({ email })
+        if(!user) return false
         const match = await bcryptjs.compare(password, user.password)
         return match ? true : false
     }

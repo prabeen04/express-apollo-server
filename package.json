@@ -48,8 +48,7 @@
     "lodash": "^4.17.11",
     "merge-graphql-schemas": "^1.5.8",
     "mongoose": "^5.4.22",
-    "ncp": "^2.0.0",
-    "require-graphql-file": "^1.0.1"
+    "ncp": "^2.0.0"
   },
   "jest": {
     "transform": {

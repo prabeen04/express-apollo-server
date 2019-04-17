@@ -11,13 +11,6 @@ type Query {
 type Mutation {
   addStory(title: String!, article: String!, authorId: String!, createdAt: String!): Story
 }
-#generic data types
-#all application data types
-type Author {
-  id: String!
-  name: String!
-  storiesId: [String]
-}
 
 type Story {
   id: String!

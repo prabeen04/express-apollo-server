@@ -1,7 +1,7 @@
 import "graphql-import-node";
 import { GraphQLSchema } from "graphql";
 import { mergeResolvers, mergeTypes } from "merge-graphql-schemas";
-import * as userSchema from './modules/auth/shared/schema.graphql'
+import * as userSchema from "./modules/auth/shared/schema.graphql";
 import * as registerTypedefs from "./modules/auth/register/schema.graphql";
 import registerResolver from "./modules/auth/register/registerResolver";
 
@@ -14,7 +14,7 @@ import storyResolver from "./modules/story/storyResolver";
 import { makeExecutableSchema } from "graphql-tools";
 
 const schema: GraphQLSchema = makeExecutableSchema({
-  typeDefs: mergeTypes([userSchema, registerTypedefs, todoTypedefs,storyTypedefs ], { all: true }),
+  typeDefs: [userSchema, registerTypedefs, todoTypedefs, storyTypedefs],
   resolvers: mergeResolvers([registerResolver, todoResolver, storyResolver])
 });
 export default schema;

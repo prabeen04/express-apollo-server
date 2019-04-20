@@ -3,6 +3,7 @@ import * as path from 'path'
 import { GraphQLSchema } from "graphql";
 import { mergeResolvers, mergeTypes, fileLoader } from "merge-graphql-schemas";
 import registerResolver from "./modules/auth/register/registerResolver";
+import loginRegister from './modules/auth/login/loginResolver'
 import todoResolver from "./modules/todo/todoResolver";
 import storyResolver from "./modules/story/storyResolver";
 
@@ -12,6 +13,6 @@ import { makeExecutableSchema } from "graphql-tools";
 
 const schema: GraphQLSchema = makeExecutableSchema({
   typeDefs: mergeTypes(typesArray, { all: true }),
-  resolvers: mergeResolvers([registerResolver, todoResolver, storyResolver])
+  resolvers: mergeResolvers([registerResolver, loginRegister, todoResolver, storyResolver])
 });
 export default schema;

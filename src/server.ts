@@ -10,10 +10,12 @@ import schema from "./schema";
 const app = express();
 
 function startServer() {
+  console.log('startServer called')
   mongoose.Promise = global.Promise;
   mongoose.connect("mongodb://localhost:27017/graphql", {
     useNewUrlParser: true
   }).then(res => {
+    console.log('inside.then()')
     const server = new ApolloServer({
       schema,
       validationRules: [depthLimit(7)]
@@ -28,7 +30,7 @@ function startServer() {
     );
     app.use(compression());
     server.applyMiddleware({ app, path: "/graphql" });
-
+    console.log('before creating server')
     const httpServer = createServer(app);
     httpServer.listen(
       { port: 4000 },
@@ -38,7 +40,7 @@ function startServer() {
         )
     );
   })
-    .catch(() => console.error.bind(console, "MongoDB connection error:"));
+    .catch(() => console.log( "MongoDB connection error:"));
   ;
 
 }

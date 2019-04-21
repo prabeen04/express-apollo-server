@@ -9,7 +9,7 @@ import cors from "cors";
 import schema from "./schema";
 const app = express();
 
-function startServer() {
+export function startServer() {
   mongoose.Promise = global.Promise;
   mongoose.connect("mongodb://localhost:27017/graphql", {
     useNewUrlParser: true

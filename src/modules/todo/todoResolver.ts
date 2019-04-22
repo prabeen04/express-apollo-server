@@ -19,6 +19,12 @@ const todoResolver: IResolvers = {
       })
       console.log(todoWithUser)
       return todoWithUser;
+    },
+    user: async (_: any, args: any) => {
+      const { id } = args;
+      const user = User.findById({ id })
+      console.log(user);
+
     }
   },
   Mutation: {

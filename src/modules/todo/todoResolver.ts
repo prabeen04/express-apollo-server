@@ -1,4 +1,5 @@
 import { IResolvers } from "graphql-tools";
+import { omit } from "lodash";
 import ITodo from "../../models/Interface/TodoInterface";
 import Todo from "../../models/TodoSchema";
 import IUser from "../../models/Interface/UserInterface";
@@ -9,14 +10,14 @@ const todoResolver: IResolvers = {
     getTodos: async (_: any, args: any) => {
       const newTodo: ITodo[] = await Todo.find();
       const users: IUser[] = await User.find();
-      const todoWithUser = newTodo.map((todo: ITodo) => {
+      const todoWithUser: any = newTodo.map((todo: ITodo) => {
         return ({
           ...todo.toObject(),
-          user: users.filter((user) => user.id === todo.userId)[0]
+          user: omit(users.filter((user: IUser) => user.id === todo.userId)[0].toObject(), 'password')
         })
 
       })
-      // console.log(todoWithUser);
+      console.log(todoWithUser)
       return todoWithUser;
     }
   },

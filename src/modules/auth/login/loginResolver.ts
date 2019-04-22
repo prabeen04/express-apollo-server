@@ -3,7 +3,7 @@ import { omit } from "lodash";
 import * as bcryptjs from "bcryptjs";
 import User from "../../../models/UserSchema";
 
-const registerResolver: IResolvers = {
+const loginResolver: IResolvers = {
   Mutation: {
     login: async (_: any, args: any) => {
         const { email, password } = args;
@@ -15,4 +15,4 @@ const registerResolver: IResolvers = {
   }
 };
 
-export default registerResolver;
+export default loginResolver;

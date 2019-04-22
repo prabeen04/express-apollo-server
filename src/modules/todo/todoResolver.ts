@@ -8,9 +8,15 @@ const todoResolver: IResolvers = {
   Query: {
     getTodos: async (_: any, args: any) => {
       const newTodo: ITodo[] = await Todo.find();
-      const user: IUser[] = await User.find();
-      const todoWithUser = newTodo.map((todo: ITodo) => ({ ...todo, user: { id: 1234 } }))
-      console.log(todoWithUser);
+      const users: IUser[] = await User.find();
+      const todoWithUser = newTodo.map((todo: ITodo) => {
+        return ({
+          ...todo.toObject(),
+          user: users.filter((user) => user.id === todo.userId)[0]
+        })
+
+      })
+      // console.log(todoWithUser);
       return todoWithUser;
     }
   },

@@ -7,14 +7,14 @@ type Mutation {
   addTodo(
     title: String!
     isCompleted: Boolean!
-    user: User!
+    userId: String!
     createdAt: DateTime!
   ): Todo
   updateTodo(
     id: String!
     title: String
     isCompleted: Boolean
-    user: User!
+    userId: String!
     createdAt: DateTime
   ): Todo
   deleteTodo(id: String!): Boolean

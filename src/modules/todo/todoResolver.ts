@@ -1,13 +1,17 @@
 import { IResolvers } from "graphql-tools";
 import ITodo from "../../models/Interface/TodoInterface";
 import Todo from "../../models/TodoSchema";
+import IUser from "../../models/Interface/UserInterface";
+import User from '../../models/UserSchema'
 
 const todoResolver: IResolvers = {
   Query: {
     getTodos: async (_: any, args: any) => {
       const newTodo: ITodo[] = await Todo.find();
-      console.log(newTodo);
-      return newTodo;
+      const user: IUser[] = await User.find();
+      const todoWithUser = newTodo.map((todo: ITodo) => ({ ...todo, user: { id: 1234 } }))
+      console.log(todoWithUser);
+      return todoWithUser;
     }
   },
   Mutation: {

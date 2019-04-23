@@ -1,8 +1,16 @@
 import { IResolvers } from "graphql-tools";
 import Story from "../../models/StorySchema";
 import IStory from "../../models/Interface/StoryInterface";
-
+import User from "../../models/UserSchema";
+import IUser from '../../models/Interface/UserInterface'
 const storyResolver: IResolvers = {
+  Story: {
+    user: async parent => {
+      const newUser: IUser | any = await User.findById({ _id: parent.toObject().authorId })
+      console.log(newUser)
+      return newUser.toObject
+    }
+  },
   Query: {
     stories: async (_: any, args: any) => {
       const stories = await Story.find();

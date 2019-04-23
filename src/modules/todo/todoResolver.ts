@@ -8,7 +8,7 @@ import User from '../../models/UserSchema'
 const todoResolver: IResolvers = {
   Todo: {
     user: async (parent: ITodo) => {
-      const newUser: any = await User.findOne({ id: parent.toObject().userId })
+      const newUser: IUser | any = await User.findOne({ _id: parent.toObject().userId })
       return newUser.toObject()
     }
   },

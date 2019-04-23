@@ -6,9 +6,7 @@ import IUser from '../../models/Interface/UserInterface'
 const storyResolver: IResolvers = {
   Story: {
     user: async parent => {
-      console.log(parent);
       const newUser: IUser | any = await User.findById({ _id: parent.toObject().authorId })
-      console.log(newUser)
       return newUser.toObject()
     }
   },

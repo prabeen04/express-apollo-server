@@ -10,7 +10,7 @@ const todoResolver: IResolvers = {
     user: async (parent: ITodo )=> {
       console.log('inside nested query')
       console.log(parent)
-      const newUser: IUser = await User.findById({id: parent.userId})
+      const newUser: any = await User.findById({id: parent.userId})
       console.log(newUser)
       return newUser.toObject()
     }

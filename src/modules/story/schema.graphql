@@ -16,6 +16,6 @@ type Story {
   id: String!
   title: String!
   article: String!
-  author: User!
+  user: User!
   createdAt: String!
 }

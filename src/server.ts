@@ -6,9 +6,10 @@ import depthLimit from "graphql-depth-limit";
 import { createServer } from "http";
 import compression from "compression";
 import cors from "cors";
+import dotenv from 'dotenv';
 import schema from "./schema";
 const app = express();
-
+dotenv.config()
 export function startServer() {
   mongoose.Promise = global.Promise;
   mongoose.connect("mongodb://localhost:27017/graphql", {
@@ -37,7 +38,7 @@ export function startServer() {
         )
     );
   })
-    .catch(() => console.log( "MongoDB connection error:"));
+    .catch(() => console.log("MongoDB connection error:"));
   ;
 
 }

@@ -1,4 +1,8 @@
 
 type Mutation {
-    login( email: String!, password: String! ): Boolean
+    login( email: String!, password: String! ): LoginResponse
+}
+type LoginResponse {
+    status: Boolean!
+    token: String!
 }

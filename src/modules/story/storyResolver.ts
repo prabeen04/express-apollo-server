@@ -5,8 +5,10 @@ import User from "../../models/UserSchema";
 import IUser from '../../models/Interface/UserInterface'
 const storyResolver: IResolvers = {
   Story: {
-    user: async parent => {
-      const newUser: IUser | any = await User.findById({ _id: parent.toObject().authorId })
+    author: async parent => {
+      console.log(parent);
+      
+      const newUser: IUser | any = await User.findById({ id: parent.toObject().authorId })
       console.log(newUser)
       return newUser.toObject
     }
@@ -17,7 +19,7 @@ const storyResolver: IResolvers = {
       return stories;
     },
     getStoryById: async (_: any, args: any) => {
-      const story: any = await Story.findOne({ _id: args._id });
+      const story: any = await Story.findOne({ _id: args.id });
       return story;
     }
   },

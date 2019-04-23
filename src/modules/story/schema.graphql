@@ -3,7 +3,7 @@
 # If any query type is not provide here you cannot query it
 type Query {
   stories: [Story]
-  getStoryById(_id: String!): Story
+  getStoryById(id: String!): Story
 }
 
 # All the mutations goes here

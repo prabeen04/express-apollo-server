@@ -7,11 +7,8 @@ import User from '../../models/UserSchema'
 
 const todoResolver: IResolvers = {
   Todo: {
-    user: async (parent: ITodo )=> {
-      console.log('inside nested query')
-      console.log(parent)
-      const newUser: any = await User.findById({id: parent.userId})
-      console.log(newUser)
+    user: async (parent: ITodo) => {
+      const newUser: any = await User.findOne({ id: parent.toObject().userId })
       return newUser.toObject()
     }
   },
@@ -24,8 +21,8 @@ const todoResolver: IResolvers = {
   Mutation: {
     addTodo: async (_: any, args: any) => {
       const newTodo: ITodo = await Todo.create(args);
-      console.log(newTodo);
-      return newTodo;
+      console.log(newTodo.toObject());
+      return newTodo.toObject();
     },
     updateTodo: async (_: any, args: any) => {
       const { id, ...patches } = args;

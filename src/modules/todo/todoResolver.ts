@@ -6,14 +6,19 @@ import IUser from "../../models/Interface/UserInterface";
 import User from '../../models/UserSchema'
 
 const todoResolver: IResolvers = {
+  User: {
+    user: async parent => {
+      const user: any = await User.findById({ id: parent.id });
+      console.log(user)
+    }
+  },
   Query: {
     getTodos: async (_: any, args: any) => {
       const newTodo: ITodo[] = await Todo.find();
-      const users: IUser[] = await User.find();
       const todoWithUser: any = newTodo.map((todo: ITodo) => {
         return ({
           ...todo.toObject(),
-          user: omit(users.filter((user: IUser) => user.id === todo.userId)[0].toObject(), 'password')
+          // user: omit(users.filter((user: IUser) => user.id === todo.userId)[0].toObject(), 'password')
         })
 
       })

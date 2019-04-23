@@ -6,24 +6,19 @@ import IUser from "../../models/Interface/UserInterface";
 import User from '../../models/UserSchema'
 
 const todoResolver: IResolvers = {
-  User: {
-    user: async parent => {
-      const user: any = await User.findById({ id: parent.id });
-      console.log(user)
+  Todo: {
+    user: async (parent: ITodo )=> {
+      console.log('inside nested query')
+      console.log(parent)
+      const newUser: IUser = await User.findById({id: parent.userId})
+      console.log(newUser)
+      return newUser.toObject()
     }
   },
   Query: {
     getTodos: async (_: any, args: any) => {
       const newTodo: ITodo[] = await Todo.find();
-      const todoWithUser: any = newTodo.map((todo: ITodo) => {
-        return ({
-          ...todo.toObject(),
-          // user: omit(users.filter((user: IUser) => user.id === todo.userId)[0].toObject(), 'password')
-        })
-
-      })
-      console.log(todoWithUser)
-      return todoWithUser;
+      return newTodo;
     },
   },
   Mutation: {

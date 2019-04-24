@@ -1,4 +1,5 @@
 import express from "express";
+import session from 'express-session';
 import { ApolloServer } from "apollo-server-express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
@@ -26,6 +27,19 @@ export function startServer() {
     app.use(
       bodyParser.urlencoded({
         extended: false
+      })
+    );
+    app.use(
+      session({
+        name: "qid",
+        secret: 'dgagagagag',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
+        }
       })
     );
     app.use(compression());

@@ -28,6 +28,23 @@ const loginResolver: IResolvers = {
         status: true,
         token
       }
+    },
+    login2: async (_: any, args: any) => {
+      const { email, password } = args;
+      const response = await fetch(`${process.env.LOGIN_URI}/token/generate-token`, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify({ email, password })
+      })
+      const data = await response.json()
+      console.log(data)
+      // return {
+      //   status: true,
+      //   token
+      // }
     }
   }
 };

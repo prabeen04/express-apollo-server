@@ -36,11 +36,12 @@ const loginResolver: IResolvers = {
         token
       }
     },
-    login2: async (_: any, args: any) => {
+    login2: async (_: any, args: any, { req }) => {
       const { username, password } = args;
       try {
-        const response = await axios.post(`${process.env.LOGIN_URI}/token/generate-token`, { username, password }, { httpsAgent: agent })
-        return { status: true, token: response.data.token }
+        const { data: { token } }: any = await axios.post(`${process.env.LOGIN_URI}/token/generate-token`, { username, password }, { httpsAgent: agent })
+        req.session.token = token
+        return { status: true, token }
       } catch (e) {
         console.log(e)
         return { status: false }

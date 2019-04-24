@@ -16,6 +16,7 @@ const storyResolver: IResolvers = {
       return stories;
     },
     getStoryById: async (_: any, args: any, { req }) => {
+      console.log(req.session)
       const story: any = await Story.findOne({ _id: args.id });
       return story;
     }

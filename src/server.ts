@@ -18,14 +18,7 @@ export function startServer() {
     const server = new ApolloServer({
       schema,
       validationRules: [depthLimit(7)],
-      context: ({ req }) => {
-        // Look at the request to run custom user logic
-        console.clear()
-        console.log('************************')
-        console.log(req)
-        let token = req.headers.authorization
-        return { token }
-      },
+      context: ({ req, res }) => ({ req, res })
     });
     app.use("*", cors());
     // body parser middleware

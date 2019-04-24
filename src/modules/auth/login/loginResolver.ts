@@ -1,7 +1,7 @@
 import { IResolvers } from "graphql-tools";
 import { omit } from "lodash";
 import * as bcryptjs from "bcryptjs";
-
+import axios from 'axios'
 import * as jwt from 'jsonwebtoken';
 import User from "../../../models/UserSchema";
 
@@ -31,16 +31,12 @@ const loginResolver: IResolvers = {
     },
     login2: async (_: any, args: any) => {
       const { email, password } = args;
-      const response = await fetch(`${process.env.LOGIN_URI}/token/generate-token`, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: JSON.stringify({ email, password })
-      })
-      const data = await response.json()
-      console.log(data)
+      console.log(email, password)
+      // const response = await axios.post(`${process.env.LOGIN_URI}/token/generate-token`, { username: email, password })
+      axios.post(`${process.env.LOGIN_URI}/token/generate-token`, { username: email, password })
+        .then(res => console.log('success'))
+        .catch(err => console.log('error...'))
+      // console.log(response)
       // return {
       //   status: true,
       //   token

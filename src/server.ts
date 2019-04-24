@@ -18,7 +18,7 @@ export function startServer() {
     const server = new ApolloServer({
       schema,
       validationRules: [depthLimit(7)],
-      context: ({ req, res }) => ({ req, res })
+      context: ({ req, res }: any) => ({ req, res })
     });
     app.use("*", cors());
     // body parser middleware

@@ -8,5 +8,6 @@ type LoginResponse {
     token: String
 }
 type LoginResponse2 {
+    status: Boolean!
     token: String
 }

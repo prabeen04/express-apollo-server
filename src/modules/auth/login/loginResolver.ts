@@ -38,19 +38,13 @@ const loginResolver: IResolvers = {
     },
     login2: async (_: any, args: any) => {
       const { username, password } = args;
-      console.log(username, password)
-      // const response = await axios.post(`${process.env.LOGIN_URI}/token/generate-token`, { username: email, password })
-      axios.post(`https://fokuswork.com:8443/salesxl/token/generate-token`, { username, password }, {
-        httpsAgent: agent
-      })
-        // axios.post('https://jsonplaceholder.typicode.com/users')
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-      // console.log(response)
-      // return {
-      //   status: true,
-      //   token
-      // }
+      try {
+        const response = await axios.post(`${process.env.LOGIN_URI}/token/generate-token`, { username, password }, { httpsAgent: agent })
+        return { status: true, token: response.data.token }
+      } catch (e) {
+        console.log(e)
+        return { status: false }
+      }
     }
   }
 };

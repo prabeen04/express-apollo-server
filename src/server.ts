@@ -23,7 +23,8 @@ export function startServer() {
         console.clear()
         console.log('************************')
         console.log(req)
-        return { token : 'asfjkasbfkajbsfabksbfabsf' }
+        let token = req.headers.authorization
+        return { token }
       },
     });
     app.use("*", cors());

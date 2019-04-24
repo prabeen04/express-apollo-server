@@ -4,5 +4,5 @@ type Mutation {
 }
 type LoginResponse {
     status: Boolean!
-    token: String!
+    token: String
 }

@@ -8,6 +8,8 @@ import User from "../../../models/UserSchema";
 declare var process: {
   env: {
     CLIENT_SECRET: string
+    LOGIN_URI: string
+    API_URI: string
   }
 }
 

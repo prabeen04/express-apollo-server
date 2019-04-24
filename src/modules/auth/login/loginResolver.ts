@@ -19,7 +19,7 @@ const loginResolver: IResolvers = {
       if (!user) return false
       const match = await bcryptjs.compare(password, user.password)
       console.log(match)
-      const token = jwt.sign(user.toObject(), process.env['CLIENT_SECRET'])
+      const token = jwt.sign(omit(user.toObject(), 'password'), process.env['CLIENT_SECRET'])
       console.log(token)
       if (!match) return { status: false }
       return {

@@ -8,6 +8,24 @@ const agent = new https.Agent({
 });
 
 const loginResolver: IResolvers = {
+    Contact: {
+        account: async (parent, args, {req }) => {
+            const { accountId } = parent
+            const { token } = req.session;
+            try {
+                const { data }: any = await axios.get(`${process.env.API_URI}/account/${accountId}`, {
+                    httpsAgent: agent,
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                })
+                return data
+            } catch (e) {
+                console.log(e)
+                return 
+            }
+        }
+    },
     Query: {
         getContactById: async (_: any, args: any, { req }) => {
             const { id } = args;

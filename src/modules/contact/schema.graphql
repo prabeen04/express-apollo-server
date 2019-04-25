@@ -1,5 +1,6 @@
 type Query{
     getContactById(id: String!): Contact!
+    contacts: [Contact]!
 }
 
 type Contact {

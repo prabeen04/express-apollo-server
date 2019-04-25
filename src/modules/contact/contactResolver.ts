@@ -42,7 +42,23 @@ const loginResolver: IResolvers = {
                 console.log(e)
                 return 
             }
-        }
+        },
+        contacts: async (_: any, args: any, { req }) => {
+            const { token } = req.session;
+            try {
+                const { data }: any = await axios.get(`${process.env.API_URI}/contacts`, {
+                    httpsAgent: agent,
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                })
+                console.log(data)
+                return data
+            } catch (e) {
+                console.log(e)
+                return 
+            }
+        },
     }
 };
 

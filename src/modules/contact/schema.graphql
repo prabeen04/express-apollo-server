@@ -1,9 +1,7 @@
 type Query{
     getContactById(id: String!): Contact!
 }
-type Mutation{
 
-}
 type Contact {
     contactId: String
     contactType: String

@@ -1,0 +1,4 @@
+type Query {
+    getAccountById(id: String!): Account!
+    accounts: [Account]!
+}

@@ -7,7 +7,7 @@ const agent = new https.Agent({
     rejectUnauthorized: false
 });
 
-const loginResolver: IResolvers = {
+const contactResolver: IResolvers = {
     Contact: {
         account: async (parent, args, {req }) => {
             const { accountId } = parent
@@ -62,4 +62,4 @@ const loginResolver: IResolvers = {
     }
 };
 
-export default loginResolver;
+export default contactResolver;

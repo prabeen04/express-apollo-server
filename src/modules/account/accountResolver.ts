@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { IResolvers } from "graphql-tools";
 import https from 'https';
-import { IAccount, IContact } from "../contact/contactInterface";
+import { IAccount } from "./accountInterface";
 // At request level
 const agent = new https.Agent({
     rejectUnauthorized: false

@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { IResolvers } from "graphql-tools";
 import https from 'https';
-import { IAccount, IContact } from "./contactInterface";
+import { IContact } from "./contactInterface";
+import { IAccount } from "../account/accountInterface";
 // At request level
 const agent = new https.Agent({
     rejectUnauthorized: false
@@ -9,7 +10,7 @@ const agent = new https.Agent({
 
 const contactResolver: IResolvers = {
     Contact: {
-        account: async (parent, args, {req }) => {
+        account: async (parent, args, { req }) => {
             const { accountId } = parent
             const { token } = req.session;
             try {
@@ -22,7 +23,7 @@ const contactResolver: IResolvers = {
                 return data
             } catch (e) {
                 console.log(e)
-                return 
+                return
             }
         }
     },
@@ -40,7 +41,7 @@ const contactResolver: IResolvers = {
                 return data
             } catch (e) {
                 console.log(e)
-                return 
+                return
             }
         },
         contacts: async (_: any, args: any, { req }) => {
@@ -56,7 +57,7 @@ const contactResolver: IResolvers = {
                 return data
             } catch (e) {
                 console.log(e)
-                return 
+                return
             }
         },
     }

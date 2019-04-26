@@ -9,6 +9,22 @@ const agent = new https.Agent({
 
 const accountResolver: IResolvers = {
     Query: {
+        getAccountById: async (_: any, args: any, { req }) => {
+            const { id } = args;
+            const { token } = req.session;
+            try {
+                const { data }: any = await axios.get(`${process.env.API_URI}/account/${id}`, {
+                    httpsAgent: agent,
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                })
+                return data
+            } catch (e) {
+                console.log(e)
+                return 
+            }
+        },
         accounts: async (_: any, args: any, { req }) => {
             const { token } = req.session;
             try {

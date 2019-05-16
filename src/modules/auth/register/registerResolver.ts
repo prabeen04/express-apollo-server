@@ -5,7 +5,12 @@ import User from "../../../models/UserSchema";
 
 const registerResolver: IResolvers = {
   Query: {
-    hi: () => "hi there!"
+    hi: () => "hi there!",
+    users: async (parent: any, args: any) => {
+      const users = await User.find();
+      console.log(users)
+      return users
+    }
   },
   Mutation: {
     register: async (_: any, args: any) => {

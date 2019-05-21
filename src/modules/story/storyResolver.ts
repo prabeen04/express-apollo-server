@@ -13,6 +13,7 @@ const storyResolver: IResolvers = {
   Query: {
     stories: async (_: any, args: any) => {
       const stories = await Story.find();
+      console.log(stories)
       return stories;
     },
     getStoryById: async (_: any, args: any, { req }) => {
@@ -30,7 +31,11 @@ const storyResolver: IResolvers = {
         authorId,
         createdAt
       });
-      return newStory.toObject();
+      console.log(newStory)
+      console.log(newStory.toObject())
+      const output = { ...newStory.toObject(), id: newStory._id}
+      console.log(output)
+      return output;
     }
   }
 };

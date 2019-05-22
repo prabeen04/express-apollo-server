@@ -10,7 +10,7 @@ type Query {
 # mutation mean any thing you want to add
 type Mutation {
   addStory(title: String!, article: String!, authorId: String!, createdAt: String!): Story
-  deleteStory(id: ID!): id
+  deleteStory(id: ID!): Story
 }
 
 type Story {

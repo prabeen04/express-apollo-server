@@ -33,9 +33,15 @@ const storyResolver: IResolvers = {
       });
       console.log(newStory)
       console.log(newStory.toObject())
-      const output = { ...newStory.toObject(), id: newStory._id}
+      const output = { ...newStory.toObject(), id: newStory._id }
       console.log(output)
       return output;
+    },
+    deleteStory: async (_: any, args: any) => {
+      const { id } = args;
+      const deletedStory = await Story.findByIdAndDelete({ _id: id })
+      console.log(deletedStory)
+      return deletedStory
     }
   }
 };

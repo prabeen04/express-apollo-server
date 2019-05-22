@@ -3,17 +3,18 @@
 # If any query type is not provide here you cannot query it
 type Query {
   stories: [Story]
-  getStoryById(id: String!): Story
+  getStoryById(id: ID!): Story
 }
 
 # All the mutations goes here
 # mutation mean any thing you want to add
 type Mutation {
   addStory(title: String!, article: String!, authorId: String!, createdAt: String!): Story
+  deleteStory(id: ID!): id
 }
 
 type Story {
-  id: String!
+  id: ID!
   title: String!
   article: String!
   user: User!

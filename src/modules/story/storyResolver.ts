@@ -38,7 +38,12 @@ const storyResolver: IResolvers = {
       return output;
     },
     updateStory: async (_: any, args: IStory) => {
-
+      const { id, ...patches } = args;
+      const updateStory: any = await Story.findByIdAndUpdate(id, {
+        $set: { ...patches }
+      });
+      console.log(updateStory);
+      return { ...updateStory, ...patches };
     },
     deleteStory: async (_: any, args: any) => {
       const { id } = args;

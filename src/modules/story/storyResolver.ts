@@ -13,11 +13,9 @@ const storyResolver: IResolvers = {
   Query: {
     stories: async (_: any, args: any) => {
       const stories = await Story.find();
-      console.log(stories)
       return stories;
     },
     getStoryById: async (_: any, args: any, { req }) => {
-      console.log(req.session.token)
       const story: any = await Story.findOne({ _id: args.id });
       return story;
     }
@@ -31,10 +29,7 @@ const storyResolver: IResolvers = {
         authorId,
         createdAt
       });
-      console.log(newStory)
-      console.log(newStory.toObject())
       const output = { ...newStory.toObject(), id: newStory._id }
-      console.log(output)
       return output;
     },
     updateStory: async (_: any, args: IStory) => {
@@ -48,7 +43,6 @@ const storyResolver: IResolvers = {
     deleteStory: async (_: any, args: any) => {
       const { id } = args;
       const deletedStory = await Story.findByIdAndDelete({ _id: id })
-      console.log(deletedStory)
       return deletedStory
     }
   }

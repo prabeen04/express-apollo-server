@@ -37,6 +37,9 @@ const storyResolver: IResolvers = {
       console.log(output)
       return output;
     },
+    updateStory: async (_: any, args: IStory) => {
+
+    },
     deleteStory: async (_: any, args: any) => {
       const { id } = args;
       const deletedStory = await Story.findByIdAndDelete({ _id: id })

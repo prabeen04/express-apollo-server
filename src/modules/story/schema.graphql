@@ -11,6 +11,13 @@ type Query {
 type Mutation {
   addStory(title: String!, article: String!, authorId: String!, createdAt: String!): Story
   deleteStory(id: ID!): Story
+  updateStory(
+    id: String!
+    title: String
+    article: String
+    authorId: String
+    createdAt: DateTime
+  ): Story
 }
 
 type Story {

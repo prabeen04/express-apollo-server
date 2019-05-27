@@ -2,7 +2,6 @@
 import { IResolvers } from "graphql-tools";
 import { omit } from "lodash";
 import * as bcryptjs from "bcryptjs";
-import axios from 'axios'
 import * as jwt from 'jsonwebtoken';
 import * as https from 'https';
 import User from "../../../models/UserSchema";
@@ -10,8 +9,6 @@ import User from "../../../models/UserSchema";
 declare var process: {
   env: {
     CLIENT_SECRET: string
-    LOGIN_URI: string
-    API_URI: string
   }
 }
 
@@ -36,17 +33,6 @@ const loginResolver: IResolvers = {
         token
       }
     },
-    login2: async (_: any, args: any, { req }) => {
-      const { username, password } = args;
-      try {
-        const { data: { token } }: any = await axios.post(`${process.env.LOGIN_URI}/token/generate-token`, { username, password }, { httpsAgent: agent })
-        req.session.token = token
-        return { status: true, token }
-      } catch (e) {
-        console.log(e)
-        return { status: false }
-      }
-    }
   }
 };
 

@@ -1,0 +1,29 @@
+scalar DateTime
+
+type Query {
+  getTodos: [Todo]  
+}
+type Mutation {
+  addTodo(
+    title: String!
+    isCompleted: Boolean!
+    userId: String!
+    createdAt: DateTime!
+  ): Todo
+  updateTodo(
+    id: String!
+    title: String
+    isCompleted: Boolean
+    userId: String!
+    createdAt: DateTime
+  ): Todo
+  deleteTodo(id: String!): Boolean
+}
+
+type Todo {
+  id: String!
+  title: String!
+  isCompleted: Boolean!
+  user: User!
+  createdAt: DateTime!
+}

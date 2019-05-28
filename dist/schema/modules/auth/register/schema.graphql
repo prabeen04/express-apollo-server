@@ -1,7 +1,0 @@
-type Query{
-    hi: String!
-    users: [User]!
-}
-type Mutation {
-    register( userName: String!, email: String!, password: String! ): User
-}

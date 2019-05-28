@@ -3,6 +3,7 @@ import Story from "../../models/StorySchema";
 import IStory from "../../models/Interface/StoryInterface";
 import User from "../../models/UserSchema";
 import IUser from '../../models/Interface/UserInterface'
+
 const storyResolver: IResolvers = {
   Story: {
     user: async parent => {

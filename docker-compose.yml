@@ -9,6 +9,9 @@ services:
       - '4000:4000'
     links:
       - mongo
+    volumes:
+      - .:/usr/src/service
+    working_dir: /usr/src/service  
   mongo:
     container_name: mongo
     image: mongo

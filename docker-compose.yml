@@ -11,14 +11,8 @@ services:
       - mongo
     volumes:
       - .:/usr/src/app
-    working_dir: /usr/src/app  
   mongo:
     container_name: mongo
     image: mongo
-    volumes:
-      - mongodb_data:/data/db
     ports:
       - '27017:27017'      
-volumes:
-  mongodb_data:
-    driver: local      

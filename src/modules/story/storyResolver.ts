@@ -7,8 +7,8 @@ import IUser from '../../models/Interface/UserInterface'
 const storyResolver: IResolvers = {
   Story: {
     user: async parent => {
-      const newUser: IUser | any = await User.findById({ _id: parent.toObject().authorId })
-      return newUser.toObject()
+      const newUser: IUser | any = await User.findById({ _id: parent.toObject({ virtuals: true }).authorId })
+      return newUser.toObject({ virtuals: true })
     }
   },
   Query: {

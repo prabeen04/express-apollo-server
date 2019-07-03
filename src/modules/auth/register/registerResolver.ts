@@ -21,7 +21,7 @@ const registerResolver: IResolvers = {
         email,
         password: hashedPassword
       });
-      return omit(newUser.toObject(), "password");
+      return omit(newUser.toObject({ virtuals: true }), "password");
     }
   }
 };

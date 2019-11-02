@@ -54,7 +54,7 @@
         "jsonwebtoken": "^8.5.1",
         "lodash": "^4.17.11",
         "merge-graphql-schemas": "^1.5.8",
-        "mongoose": "^5.4.22",
+        "mongoose": "^5.7.5",
         "ncp": "^2.0.0"
     },
     "jest": {
